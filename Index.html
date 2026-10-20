@@ -4,14 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecionando...</title>
-    
-    <!-- AQUI ESTÁ O SEGREDO: O número 0 significa redirecionamento imediato. -->
-    <!-- Troque o link abaixo para o local onde você quer que o cliente caia hoje -->
-    <meta http-equiv="refresh" content="0; url=https://www.cetormanutencao.com.br">
-    
+
+    <!--
+      INSTRUÇÕES DE USO:
+      1. Altere a URL na linha abaixo para o seu link de destino desejado.
+         É o único lugar que você precisa editar!
+      2. Salve este arquivo com o nome "index.html".
+      3. Faça o upload para o seu repositório no GitHub Pages.
+
+      COMO FUNCIONA:
+      - A tag <meta http-equiv="refresh"> faz o redirecionamento imediato. É a forma mais rápida e compatível.
+      - O código JavaScript abaixo serve como uma garantia (fallback). Se, por algum motivo, o meta refresh falhar,
+        o JavaScript fará o redirecionamento.
+    -->
+
+    <!-- ***** EDITE AQUI O SEU LINK DE DESTINO ***** -->
+    <meta http-equiv="refresh" content="0; url=https://www.instagram.com/cetor.fachadas/">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        a {
+            color: #007bff;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
-    <p>Redirecionando... Se não for redirecionado automaticamente, 
-    <a href="https://www.cetormanutencao.com.br">clique aqui</a>.</p>
-</body>
-</html>
+<body>
+    <div class="container">
+        <h1>Redirecionando...</h1>
+        <p>Você está sendo redirecionado. Se nada acontecer em alguns segundos, <a id="link-destino" href="https://www.seusite.com.br/destino-final">clique aqui</a>.</p>
+    </div>
+
+    <script>
+        // Pega a URL da tag meta para não precisar editar em dois lugares.
+        const metaTag = document.querySelector('meta[http-equiv="refresh"]');
+        const urlDestino = metaTag ? metaTag.getAttribute('content').split('url=')[1] : 'https://www.seusite.com.br/destino-padrao';
+
+        // Atualiza o link de fallback no corpo da página
+        document.getElementById('link-destino').href = urlDestino;
